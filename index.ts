@@ -25,6 +25,11 @@ import check_email from './forget_pass/check_email';
 import get_arch_customer from './cotomer/arciv_customer';
 import change_pass from './change_settings/change_pass';
 import update_info from './change_settings/mysettings'
+import getAppointmentsForToday from './cotomer/appintment_tody';
+import get_rating from './provider/get_reviwe';
+import logingoogle from './func/login_google';
+import active_status from './provider/active_status_1';
+import status_0 from './provider/active_staus'
 
 // import Service from './moduls/serive';
 
@@ -54,6 +59,11 @@ app.use(change_pass)
  app.use(check_email)
  app.use(get_arch_customer)
  app.use(update_info)
+ app.use(getAppointmentsForToday)
+ app.use(get_rating)
+ app.use(logingoogle)
+ app.use(active_status)
+ app.use(status_0);
 const port = process.env.port||5000;
 app.listen(port, () => {
   console.log(`Server is running on port `);

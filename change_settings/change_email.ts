@@ -10,6 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const check_email = app.post('/change_email', async (req: Request, res: Response) => {
   const { email , new_email } = req.body;
+
+  console.log( conn.query('SELECT email FROM customer WHERE email = ?'))
   conn.query('SELECT email FROM customer WHERE email = ?', email, (error, results) => {
     if (error) {
       console.error('error SQL:', error);}

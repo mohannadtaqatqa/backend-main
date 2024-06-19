@@ -15,8 +15,6 @@ conn.connect((err) => {
          ;
    }
    console.log('connected to database 4');
-   calculateAndSetRatio();
-   calculateAndSetcout();
 })
 
 export {conn};

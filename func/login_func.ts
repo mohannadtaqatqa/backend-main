@@ -197,6 +197,9 @@ import jwt from 'jsonwebtoken';
 const app = express();
 
 import bodyParser from 'body-parser';
+import calculateAndSetcout from "./coutn_request";
+import calculateAndSetRatio from "./sumrating";
+import cancelOldRequest from "./cancel_request";
 app.use(bodyParser.json());
 
 const loginUser = async (email: string, password: string) => {
@@ -228,6 +231,9 @@ const loginUser = async (email: string, password: string) => {
         });
        
        if(password==provider?.pass){
+        calculateAndSetRatio();
+        calculateAndSetcout();
+        cancelOldRequest;
         return { user: provider, userType: 1 };
 
        }
@@ -257,7 +263,10 @@ const generateToken = (userData: any) => {
     let city;
     let phone;
     let isvalid;
-    let additionalData = {};
+    let rating;
+    let count;
+    let status
+    // let additionalData = {};
 
     if (userType === 0) {
         userId = user.customer_id;
@@ -274,18 +283,20 @@ const generateToken = (userData: any) => {
         address = user.address;
         city = user.city;
         phone = user.provider_phone;
-        isvalid=user.status_verifycode
-        additionalData = {
-            rating: user.rating,
-            count: user.count_requset
-        };
+        isvalid=user.status_verifycode,
+
+        // additionalData = {
+            rating= user.rating,
+            count= user.count_requset
+            status = user.status
+    
     }
     const crypto = require('crypto');
 
 
  const secretKey = crypto.randomBytes(32).toString('hex');
 
-    const token = jwt.sign({ userId, email: user.email,address: address,city: city,phone: phone, fname, lname, userType,isvalid, ...additionalData }, secretKey, { expiresIn: '500h' });
+    const token = jwt.sign({ userId, email: user.email,address: address,city: city,phone: phone, fname, lname, userType,isvalid,rating,count: user.count_request,status: user.status }, secretKey, { expiresIn: '500h' });
     return token;
 }
 

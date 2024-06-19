@@ -27,9 +27,10 @@ const booking_Api = app.post('/booking', async (req: Request, res: Response) => 
             return res.status(400).json({ error: 'You already have a booking for this date' });
         }
         // If no existing booking, proceed with insertion
-        const sql = 'INSERT INTO service_request (servcie_id, provider_id, customer_id, date_request, description) VALUES (?, ?, ?, ?, ?)';
+        const sql = 'INSERT INTO service_request (servcie_id, provider_id, customer_id, date_request, description,newdate) VALUES (?, ?, ?, ?, ?, ?)';
         try {
-            const insertionResult = await conn.query(sql, [serviceid, providerid, customerid, date, description]);
+          console.log(result)
+            const insertionResult = await conn.query(sql, [serviceid, providerid, customerid, date, description,date]);
             insertNotify("حجز جديد", "يوجد لديك طلب حجز جديد", providerid, customerid, "booking"+providerid, "", "", "1")
             res.status(200).json({ message: "Booking successful" });
         } catch (err) {

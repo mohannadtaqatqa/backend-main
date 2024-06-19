@@ -29,7 +29,7 @@ const new_date =app.post('/SugestNewDate/:id', async (req: Request, res: Respons
         const updateQuery = 'UPDATE service_request SET status = 3 WHERE service_requestid = ?';
         conn.query(updateQuery, [requestId]);
         console.log(results)
-        insertNotify('تم اقتراح موعد جديد', 'لقد قام مقدم الخدمة بإقتراح موعد جديد يرجى التحقق من صفحة طلباتي', results[0].provider_id, results[0].customer_id, "suggest"+results[0].customer_id, "", "", '0')
+        // insertNotify('تم اقتراح موعد جديد', 'لقد قام مقدم الخدمة بإقتراح موعد جديد يرجى التحقق من صفحة طلباتي', results[0].provider_id, results[0].customer_id, "suggest"+results[0].customer_id, "", "", '0')
         return res.status(200).json({ message: 'New date added and status updated successfully' });
 
         });

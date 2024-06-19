@@ -18,7 +18,7 @@ const app = express();
             console.error('Error calculating ratio and updating provider table:', error);
             return;
           }
-      
+          console.log(results);
           console.log('Ratio calculated and set in the provider table successfully');
         });
 }
