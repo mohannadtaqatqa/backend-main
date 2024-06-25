@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const signupProvider = app.post('/signup/provider', async (req: Request, res: Response) => {
-    const { fname, lastname, phone, city, address, pass, email, serviceid } = req.body;
+    const { fname, lastname, phone, city, address, pass, email,verify ,serviceid } = req.body;
     if (!fname || !lastname || !phone || !city || !address || !pass || !email) {
         return res.status(400).json({ error: "All data is required" });
     }
@@ -64,8 +64,8 @@ const signupProvider = app.post('/signup/provider', async (req: Request, res: Re
         }
         //const hashpass = await bcrypt.hash(pass,15);
 
-        const sql = 'INSERT INTO service_provider (provider_fname, provider_lname, provider_phone, city, address, pass, email, service_id, verifycode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        conn.query(sql, [fname, lastname, phone, city, address, pass, email, serviceid, verifycode], (err, results) => {
+        const sql = 'INSERT INTO service_provider (provider_fname, provider_lname, provider_phone, city, address, pass, email, service_id, verifycode, status_verifycode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        conn.query(sql, [fname, lastname, phone, city, address, pass, email, serviceid, verifycode,verify], (err, results) => {
             if (err) {
                 console.error(err);
                 return res.status(500).json({ error: 'Server error' });

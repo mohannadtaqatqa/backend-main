@@ -21,7 +21,7 @@ async function sendGCM(title: string, message: string, topic: string, pageid: st
     };
 
     const headers = {
-        'Authorization': 'key=AAAA4xGgVIM:APA91bGhjL6y7rCWeNB6TNB6J0qZf6Mp2ALP73UgV5nYvF_Bja239fbg-1W5ADivIrU5h5-9igFQBaXB4xbJCGICOa0YJj4d7SFEkQNi-cUgpj9OrOZPg21HuJFLezGzBd2GtMwep_6J',
+        'Authorization': 'key=AAAA4xGgVIM:APA91bEpo55GBU4mz6SrNrqbsDfWUT6xpTYJklLXck5rO8J9wgrcVkygBzXGSJY5t339SxEXKc6HwrguFGHnfa0FBbb0FS5Jwp7RYQRcAvqW6dmSIHv3WP3A9p_neYH-TOC57ULADmBq',
         'Content-Type': 'application/json'
     };
 

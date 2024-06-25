@@ -90,7 +90,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 const apisignup = app.post('/signup/user', async (req: Request, res: Response) => {
-  const { fname, lastname, phone, city, address, pass, email } = req.body;
+  const { fname, lastname, phone, city, address, pass, email,verify } = req.body;
   if (!fname || !lastname || !phone || !city || !address || !pass || !email) {
     return res.status(400).json({ error: "All data is required" });
   }
@@ -143,8 +143,8 @@ const apisignup = app.post('/signup/user', async (req: Request, res: Response) =
       return res.status(404).json({ error: 'Address is empty' });
     }
 
-    const sql = 'INSERT INTO customer (customer_fname, customer_lname, phone_num, city, address, pass, email,verifycode) VALUES (?, ?, ?, ?, ?, ?, ?,?)';
-    conn.query(sql, [fname, lastname, phone, city, address, hash, email,verifycode], (err, results) => {
+    const sql = 'INSERT INTO customer (customer_fname, customer_lname, phone_num, city, address, pass, email,verifycode, status_verifycode) VALUES (?, ?, ?, ?, ?, ?, ?,?,?)';
+    conn.query(sql, [fname, lastname, phone, city, address, hash, email,verifycode,verify], (err, results) => {
       if (err) {
         console.error(err);
         return res.status(500).json({ error: 'Server error' });
