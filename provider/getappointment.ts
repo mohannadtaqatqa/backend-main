@@ -19,7 +19,7 @@ const getappointment = app.get('/GETAppointment/provider/:id', (req: Request, re
                   FROM appointment t1 
                   JOIN customer t2 ON t1.customer_id = t2.customer_id 
                   JOIN service t3 ON t1.servcie_id = t3.servcie_id
-                  WHERE t1.provider_id = ?`;
+                  WHERE t1.provider_id = ? AND t1.status = 1`; ;
 
   conn.query(getapo, [providerId], (err, result) => {
     if (err) {

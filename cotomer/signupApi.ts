@@ -85,7 +85,7 @@ import sendEmail from "../func/sendemail";
 
 const app = express()
 var verifycode = Math.floor(1000 + Math.random() * 9000);
-console.log(verifycode);
+console.log("signup: " + verifycode);
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 

@@ -94,10 +94,10 @@ WHERE t5.status = 4
 
         }
         if(result.length==0){
-            res.status(400).json({ message: "You don't have any appointments" })
+          return  res.status(400).json({ message: "You don't have any appointments" })
 
         }
-        res.json(result);
+      return  res.json(result);
     })
 })
 export default get_arch_customer;
